@@ -42,10 +42,16 @@ def home():
                 f"Available Routes:<br/>"
                 f"/api/v1.0/precipitation<br/>"
                 f"/api/v1.0/stations<br/>" 
-                f"/api/v1.0/tobs")
+                f"/api/v1.0/tobs<br/><br/>"
+                f"For the next API, enter the start date in the format shown<br/>"
+                f"/api/v1.0/YYYY-MM-DD<br/>"
+                f"For the next API, enter the start/end dates in the format shown<br/>"
+                f"/api/v1.0/YYYY-MM-DD/YYYY-MM-DD")
 
-
+####################################
 # Define route to precipitaton page
+####################################
+
 @app.route("/api/v1.0/precipitation")
 def precip():
 
@@ -72,7 +78,10 @@ def precip():
 # Return a json representation of the data
     return jsonify(all_precip)
 
+#############################################
 # Define route to stations page
+#############################################
+
 @app.route("/api/v1.0/stations")
 def stations():
     # Create our session (link) from Python to the DB
@@ -88,7 +97,10 @@ def stations():
     # return JSON list of stations
     return jsonify(station_list)
 
+###############################################
 # Define route to Temperature Page
+###############################################
+
 @app.route("/api/v1.0/tobs")
 def temps():
 
@@ -116,8 +128,10 @@ def temps():
 
     return jsonify(all_temps)
 
-
+###################################################
 # Define route to Temperature Start Range Analysis
+###################################################
+
 @app.route("/api/v1.0/<start>")
 def starttemp(start):
     # Create our session (link) from Python to the DB
@@ -129,8 +143,10 @@ def starttemp(start):
   
     return jsonify(starttemps)
 
-
+#######################################################
 # Define route to Temperature Start/End Range Analysis
+#######################################################
+
 @app.route("/api/v1.0/<start>/<end>")
 def startendtemp(start, end):
     # Create our session (link) from Python to the DB
